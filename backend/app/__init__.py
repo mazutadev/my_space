@@ -1,6 +1,6 @@
 from flask import Flask
 from .config.config import Config
-from .extentions.base import db, migrate, redis_client,api
+from .extensions import db, migrate, redis_client, api
 
 
 def create_app():
@@ -16,5 +16,6 @@ def create_app():
 
     with app.app_context():
         from .main import models
+        from .auth import models
 
     return app
