@@ -21,7 +21,7 @@ ENV FLASK_ENV=${FLASK_ENV}
 ENV FLASK_APP=run.py
 
 # Открываем порт, на котором будет работать приложение
-EXPOSE 5000
+EXPOSE 8000
 
-# Запускаем приложение
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Запускаем приложение с Gunicorn
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "run:app"]
